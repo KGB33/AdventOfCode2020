@@ -47,6 +47,8 @@ Go has `&&`, `||` and, `!`. It does not have a XOR operator because
 
 ## String Parsing
 
+### Split
+
 You can split strings using a regex pattern.
 For example, on day two we had to split a string in the following format:
 ```
@@ -56,3 +58,31 @@ For example, on day two we had to split a string in the following format:
 We can acheave this split using the regex `-| |: ` (*dash* OR *space* OR *colon* *space*).
 Then converting the first two indexes to ints.
 
+### Iteration/runes
+
+You can iterate over the runes in a string using a simple for loop.
+
+```Go
+for index, rune := range string {
+	// Stuff
+}
+```
+
+You can also cast a string into a slice of runes.
+
+```Go
+slice_runes = []rune(string)
+```
+
+# Loops
+
+## Modular Logic
+
+On day three we had a pattern that repeated infiniatly in one direction.
+As such to iterate over it in that direction we could just loop back around.
+I.e `last_index + 1 == first_index`. An easy way to do this mathmadicly would
+be by using the modulo operator.
+
+Given some slice s, an interger i.
+
+`i = i + 1 % len(s)` will always be in s.
