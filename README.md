@@ -2,7 +2,7 @@
 
 My solutions to [AdventOfCode2020](https://adventofcode.com/2020https://adventofcode.com/2020)
 
-All solutions will be written in Go.
+I am using this problem set to practice Go. My notes are below.
 
 
 # Notes
