@@ -52,7 +52,7 @@ Go has `&&`, `||` and, `!`. It does not have a XOR operator because
 You can split strings using a regex pattern.
 For example, on day two we had to split a string in the following format:
 ```
-"3-6 s: ssdsssss" --> [3, 6, "s", "ssdsssss"]
+"3-6 s: some_text" --> [3, 6, "s", "some_text"]
 ```
 
 We can acheave this split using the regex `-| |: ` (*dash* OR *space* OR *colon* *space*).
@@ -78,11 +78,11 @@ slice_runes = []rune(string)
 
 ## Modular Logic
 
-On day three we had a pattern that repeated infiniatly in one direction.
+On day three we had a pattern that repeated infinitely in one direction.
 As such to iterate over it in that direction we could just loop back around.
-I.e `last_index + 1 == first_index`. An easy way to do this mathmadicly would
+I.e `last_index + 1 == first_index`. An easy way to do this mathematically would
 be by using the modulo operator.
 
-Given some slice s, an interger i.
+Given some slice s, an integer i.
 
 `i = i + 1 % len(s)` will always be in s.
