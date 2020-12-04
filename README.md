@@ -58,6 +58,9 @@ For example, on day two we had to split a string in the following format:
 We can acheave this split using the regex `-| |: ` (*dash* OR *space* OR *colon* *space*).
 Then converting the first two indexes to ints.
 
+For day 4 I had to split a multiline string at the white space. For this use-case
+`strings.Fields(s)` worked perfectly.
+
 ### Iteration/runes
 
 You can iterate over the runes in a string using a simple for loop.
@@ -86,3 +89,31 @@ be by using the modulo operator.
 Given some slice s, an integer i.
 
 `i = i + 1 % len(s)` will always be in s.
+
+# Switch statements
+
+## if-else-if-else shorthand
+
+You can use switch statements as a shorthand for extended if else-if else chains.
+
+## One of
+
+In python to check if a value, n, was one of several values we would do.
+
+```Python
+if n in (possible, values,):
+	# do stuff
+else:
+	# do other stuff
+```
+
+In go you can use a switch statement.
+
+
+```Go
+switch n:
+	case possible, values:
+		// do stuff
+	default:
+		// do other stuff
+```
