@@ -117,3 +117,15 @@ switch n:
 	default:
 		// do other stuff
 ```
+
+# Sorting
+You can sort splices using the `sort` package. There is a function for each type of
+splice.
+
+# Interesting Problem Details
+
+## Day 05
+An ordinary binary search didn't work due to indexing errors. Instead, rounding with
+`math.Float` and `math.Ceil` gave the correct answers.
+
+
