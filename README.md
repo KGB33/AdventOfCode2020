@@ -122,6 +122,33 @@ switch n:
 You can sort splices using the `sort` package. There is a function for each type of
 splice.
 
+# DataTypes
+
+## Set
+
+There is no `set` datatype in Go. However, the keys in a map must be unique,
+so we can build a map where the keys are the elements of our "set" and the
+values are booleans. Because the values are booleans, it makes asking if 
+`x exists in y` easy. [source](https://yourbasic.org/golang/implement-set/)
+
+```Go
+set := make(map[string]bool) // New empty set
+set["Foo"] = true            // Add
+for k := range set {         // Loop
+    fmt.Println(k)
+}
+delete(set, "Foo")    // Delete
+size := len(set)      // Size
+exists := set["Foo"]  // Membership
+```
+
+## Counter (?)
+
+We can also use a map as a counter, Just like with sets we use the
+key to be the value we care about, and its corresponding value is an integer
+denoting its frequency.
+
+
 # Interesting Problem Details
 
 ## Day 05
