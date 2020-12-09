@@ -77,6 +77,18 @@ You can also cast a string into a slice of runes.
 slice_runes = []rune(string)
 ```
 
+Converting runes to the integers they represent is a little more tricky.
+Calling `int('3')` will return `51` the integer representation of a UTF-8 3.
+To convert a rune to the value it represents use `int(r - '0')` where `r` is
+any rune '0'->'9'. This works because the 0-9 are all sequential.
+Such that `'0'` (UTF-8: 48) minus itself equals UTF-8: 0. See the table below.
+
+| Rune | UTF-8 | int(r - '0') |
+|:----:|:-----:|:------------:|
+|  '0' |   48  |       0      |
+|  '1' |   49  |       1      |
+|  '2' |   50  |       2      |
+
 # Loops
 
 ## Modular Logic
