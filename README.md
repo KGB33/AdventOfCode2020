@@ -170,6 +170,16 @@ We can also use a map as a counter, Just like with sets we use the
 key to be the value we care about, and its corresponding value is an integer
 denoting its frequency.
 
+# Misc
+
+## Copy
+
+One way to copy slices of structs is to use `append`.
+
+```Go
+copy := append([]Type{}, source...)
+```
+This creates a new slice of types, then appends the unpacked values from the source slice.
 
 # Interesting Problem Details
 
