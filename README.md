@@ -124,6 +124,16 @@ splice.
 
 # DataTypes
 
+## Maps
+
+Maps are automatically passed by reference in Go. I used this in combination with the
+set implementation described below to keep track of the possible bags in day 7 part 1.
+
+## Structs
+
+You can add a `String()` method to a struct that will automatically be called
+when converting to a string. This is similar to `__str__` in python.
+
 ## Set
 
 There is no `set` datatype in Go. However, the keys in a map must be unique,
