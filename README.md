@@ -173,14 +173,25 @@ denoting its frequency.
 
 ## Slices (Queues and Stacks)
 
+To preallocate a slice with a dynamic (or set) length, use `make`.
+See [Tour of Go](https://tour.golang.org/moretypes/13) for more info.
+```Go
+slice := make([]T, length, capacity)
+```
+
 You can concisely implement queues and stacks using slices.
 For example, to push the next item off a queue.
 ```Go
 next, q = q[0], q[1:]
 ```
 
-More examples can be found [here](https://github.com/golang/go/wiki/SliceTricks).
+To add a new item to a stack:
 
+```Go
+stack = append([]T{newValue}, stack...)
+```
+
+More examples can be found [here](https://github.com/golang/go/wiki/SliceTricks).
 
 
 # Misc
