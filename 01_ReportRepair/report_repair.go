@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	report := parseFile("input.txt")
+	report := parseFile("input.prod")
 	part1(report)
 	part2(report)
 
