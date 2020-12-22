@@ -217,6 +217,16 @@ copy := append([]Type{}, source...)
 ```
 This creates a new slice of types, then appends the unpacked values from the source slice.
 
+## Compiling
+
+You can set the `GOOS` and `GOARCH` environment variables
+to change what OS and ARCH Go builds for.
+The example below runs on a RaspberryPi.
+
+```
+GOOS=linux GOARCH=arm go build -o out_file_name
+```
+
 # Interesting Problem Details
 
 ## Day 05
