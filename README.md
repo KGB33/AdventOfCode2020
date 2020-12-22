@@ -49,6 +49,8 @@ Go has `&&`, `||` and, `!`. It does not have a XOR operator because
 
 ### Split
 
+#### Regex
+
 You can split strings using a regex pattern.
 For example, on day two we had to split a string in the following format:
 ```
@@ -58,8 +60,18 @@ For example, on day two we had to split a string in the following format:
 We can acheave this split using the regex `-| |: ` (*dash* OR *space* OR *colon* *space*).
 Then converting the first two indexes to ints.
 
+#### WhiteSpace
+
 For day 4 I had to split a multiline string at the white space. For this use-case
 `strings.Fields(s)` worked perfectly.
+
+#### Delimiters
+
+Use `strings.Split(string, delimiter)` to split a string on a arbitrary delimiter.
+
+```Go
+s := strings.Split("17,x,x", ",") // ["17", "x", "x"]
+```
 
 ### Iteration/runes
 
