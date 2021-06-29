@@ -233,4 +233,5 @@ GOOS=linux GOARCH=arm go build -o out_file_name
 An ordinary binary search didn't work due to indexing errors. Instead, rounding with
 `math.Float` and `math.Ceil` gave the correct answers.
 
-
+## Day 17
+A 3/4D (part 1/2) version of Conway's Game of Life.
