@@ -1,3 +1,4 @@
+// rewrote 3d part 1 code to work for 4d
 package main
 
 import (
@@ -7,13 +8,16 @@ import (
 	"os"
 )
 
+// const DIMENSION = 3 // Part 1
+const DIMENSION = 4 // Part 2
+
 func main() {
 	pocketDimension := parseInput("input.prod")
 	fmt.Println(pocketDimension)
 	for range make([]int, 6) {
 		pocketDimension.Cycle()
 	}
-	fmt.Printf("Part 1 solution: %d\n", len(pocketDimension.grid))
+	fmt.Printf("Part %d solution: %d\n", DIMENSION-2, len(pocketDimension.grid))
 }
 
 func parseInput(fileName string) Dimension {
@@ -23,15 +27,14 @@ func parseInput(fileName string) Dimension {
 	}
 	defer file.Close()
 
-	output := make(map[[3]int]Cube)
+	output := make(map[[DIMENSION]int]Cube)
 	scanner := bufio.NewScanner(file)
 	y := 0
-	z := 0
 	for scanner.Scan() {
 		text := scanner.Text()
 		for x, r := range text {
 			if r == '#' {
-				output[[3]int{x, y, z}] = Cube{true, 0}
+				output[[DIMENSION]int{x, y}] = Cube{true, 0}
 			}
 		}
 		y++
@@ -39,13 +42,13 @@ func parseInput(fileName string) Dimension {
 	return Dimension{output}
 }
 
-func generateNeighborCoords(coords [3]int) [][3]int {
-	output := [][3]int{}
-	deltaPermutations := func() [][3]int {
-		permutations := [][3]int{}
-		currPermutation := [3]int{}
+func generateNeighborCoords(coords [DIMENSION]int) [][DIMENSION]int {
+	output := [][DIMENSION]int{}
+	deltaPermutations := func() [][DIMENSION]int {
+		permutations := [][DIMENSION]int{}
+		currPermutation := [DIMENSION]int{}
 		vals := []int{-1, 0, 1}
-		pn := make([]int, 3)
+		pn := make([]int, DIMENSION)
 		k := len(vals)
 		for {
 			for i, x := range pn {
@@ -61,18 +64,18 @@ func generateNeighborCoords(coords [3]int) [][3]int {
 				}
 				pn[i] = 0
 				i++
-				if i == 3 {
+				if i == DIMENSION {
 					return permutations
 				}
 			}
 		}
 	}()
 	for _, delta := range deltaPermutations {
-		if delta == [3]int{0, 0, 0} {
+		if delta == [DIMENSION]int{} {
 			continue
 		}
 		newNeighbor := coords
-		for i := 0; i < 3; i++ {
+		for i := 0; i < DIMENSION; i++ {
 			newNeighbor[i] = coords[i] + delta[i]
 		}
 		output = append(output, newNeighbor)
@@ -82,12 +85,12 @@ func generateNeighborCoords(coords [3]int) [][3]int {
 
 type Dimension struct {
 	// Using a map allows us to have negative indexes, whereas a 3d splice does not
-	grid map[[3]int]Cube
+	grid map[[DIMENSION]int]Cube
 }
 
 func (d *Dimension) CalculateNeighbors() {
 	d.ClearNeighbors()
-	var keys [][3]int
+	var keys [][DIMENSION]int
 	for k := range d.grid {
 		keys = append(keys, k)
 	}
@@ -104,7 +107,7 @@ func (d *Dimension) CalculateNeighbors() {
 }
 
 func (d *Dimension) ClearNeighbors() {
-	var keys [][3]int
+	var keys [][DIMENSION]int
 	for k := range d.grid {
 		keys = append(keys, k)
 	}
